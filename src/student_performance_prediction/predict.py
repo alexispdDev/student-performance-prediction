@@ -8,7 +8,7 @@ from typing import Literal
 
 class Student(BaseModel):
     hours_studied: int = Field(..., ge=0)
-    attendance: int = Field(..., ge=0)
+    attendance: int = Field(..., ge=0, le=100)
     parental_involvement: Literal['low', 'medium', 'high']
     access_to_resources: Literal['low', 'medium', 'high']
     extracurricular_activities: Literal['yes', 'no']

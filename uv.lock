@@ -1133,8 +1133,6 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "fastapi" },
-    { name = "pandas" },
-    { name = "requests" },
     { name = "scikit-learn" },
     { name = "uvicorn" },
 ]
@@ -1143,14 +1141,14 @@ dependencies = [
 dev = [
     { name = "ipykernel" },
     { name = "matplotlib" },
+    { name = "pandas" },
+    { name = "requests" },
     { name = "xgboost" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "fastapi", specifier = "==0.121.1" },
-    { name = "pandas", specifier = "==2.3.3" },
-    { name = "requests", specifier = "==2.32.5" },
     { name = "scikit-learn", specifier = "==1.7.2" },
     { name = "uvicorn", specifier = "==0.38.0" },
 ]
@@ -1159,6 +1157,8 @@ requires-dist = [
 dev = [
     { name = "ipykernel", specifier = "==7.1.0" },
     { name = "matplotlib", specifier = "==3.10.7" },
+    { name = "pandas", specifier = "==2.3.3" },
+    { name = "requests", specifier = "==2.32.5" },
     { name = "xgboost", specifier = "==3.1.1" },
 ]
 

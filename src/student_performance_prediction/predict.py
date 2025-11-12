@@ -1,0 +1,54 @@
+import pickle
+import uvicorn
+
+from fastapi import FastAPI
+from pydantic import BaseModel, Field
+from typing import Literal
+
+
+class Student(BaseModel):
+    hours_studied: int = Field(..., ge=0)
+    attendance: int = Field(..., ge=0)
+    parental_involvement: Literal['low', 'medium', 'high']
+    access_to_resources: Literal['low', 'medium', 'high']
+    extracurricular_activities: Literal['yes', 'no']
+    sleep_hours: int = Field(..., ge=0)
+    previous_scores: int = Field(..., ge=0, le=100)
+    motivation_level: Literal['low', 'medium', 'high']
+    internet_access: Literal['yes', 'no']
+    tutoring_sessions: int = Field(..., ge=0)
+    family_income: Literal['low', 'medium', 'high']
+    teacher_quality: Literal['low', 'medium', 'high']
+    school_type: Literal['public', 'provate']
+    peer_influence: Literal['negative', 'neutral', 'positive']
+    physical_activity: int = Field(..., ge=0)
+    learning_disabilities: Literal['yes', 'no']
+    parental_education_level: Literal['high_school', 'college', 'postgraduate']
+    distance_from_home: Literal['near', 'moderate', 'far']
+    gender: Literal['male', 'female']
+
+
+
+class PredictResponse(BaseModel):
+    predicted_score: float
+    
+
+app = FastAPI(title='score-prediction')
+
+with open('model.bin', 'rb') as f_in:
+    pipeline = pickle.load(f_in)
+
+def predict_single(student):
+    predicted_score = pipeline.predict(student)[0]
+    return float(predicted_score)
+
+@app.post('/predict')
+def predict(student: Student) -> PredictResponse:
+    predicted_score = predict_single(student.model_dump())
+    return {
+        'predicted_score': predicted_score
+    }
+
+if __name__ == '__main__':
+    uvicorn.run('predict:app', host='0.0.0.0', port=8000, reload=True)
+

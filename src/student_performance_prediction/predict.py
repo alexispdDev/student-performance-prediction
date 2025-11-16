@@ -35,8 +35,12 @@ class PredictResponse(BaseModel):
 
 app = FastAPI(title='score-prediction')
 
-with open('src/student_performance_prediction/model.bin', 'rb') as f_in:
-    pipeline = pickle.load(f_in)
+try:
+    with open('src/student_performance_prediction/model.bin', 'rb') as f_in:
+        pipeline = pickle.load(f_in)
+except FileNotFoundError:
+    with open('model.bin', 'rb') as f_in:
+        pipeline = pickle.load(f_in)
 
 def predict_single(student):
     predicted_score = pipeline.predict(student)[0]

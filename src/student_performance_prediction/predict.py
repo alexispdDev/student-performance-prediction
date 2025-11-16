@@ -1,7 +1,6 @@
+import os
 import pickle
-import uvicorn
 
-from fastapi import FastAPI
 from pydantic import BaseModel, Field
 from typing import Literal
 
@@ -28,31 +27,15 @@ class Student(BaseModel):
     gender: Literal['male', 'female']
 
 
-
 class PredictResponse(BaseModel):
     predicted_score: float
     
 
-app = FastAPI(title='score-prediction')
+MODEL_PATH = os.environ.get("MODEL_PATH", 'src/student_performance_prediction/model.bin')
+with open(MODEL_PATH, 'rb') as f_in:
+    pipeline = pickle.load(f_in)
 
-try:
-    with open('src/student_performance_prediction/model.bin', 'rb') as f_in:
-        pipeline = pickle.load(f_in)
-except FileNotFoundError:
-    with open('model.bin', 'rb') as f_in:
-        pipeline = pickle.load(f_in)
 
-def predict_single(student):
+def predict_single(student) -> PredictResponse:
     predicted_score = pipeline.predict(student)[0]
     return float(predicted_score)
-
-@app.post('/predict')
-def predict(student: Student) -> PredictResponse:
-    predicted_score = predict_single(student.model_dump())
-    return {
-        'predicted_score': predicted_score
-    }
-
-if __name__ == '__main__':
-    uvicorn.run('predict:app', host='0.0.0.0', port=8000, reload=True)
-

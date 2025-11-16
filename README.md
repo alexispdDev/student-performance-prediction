@@ -2,7 +2,7 @@
 
 Student Performance Prediction is an application based on Machine Learning models to predict students exam score in order to to forecast student performance and assist in early intervention strategies for at-risk learners.
 
-The application was developed following The project includes data preprocessing, exploratory data analysis (EDA), feature selection, model training, and performance evaluation using multiple ML algorithms. 
+The application was developed following machine learnign techniques that includes data preprocessing, exploratory data analysis (EDA), feature selection, model training, and performance evaluation using multiple ML algorithms. 
 
 For further information about the project, see: [Documentation](project-documentation.md)
 

@@ -20,14 +20,23 @@ ENV PATH="/app/.venv/bin:$PATH"
 COPY "pyproject.toml" "uv.lock" ".python-version" ./
 
 # Install dependencies using `uv`, respecting locked versions for consistency
-RUN uv sync --no-dev --locked
+RUN mkdir -p /app/src/student_performance_prediction
 
-# Copy your application code and model file into the container
-COPY "src/student_performance_prediction/predict.py" "src/student_performance_prediction/model.bin" ./
+# Copy your application into the container
+COPY src/student_performance_prediction/serve.py src/student_performance_prediction/predict.py /app/src/student_performance_prediction/
+
+# Copy your model file into the container
+COPY src/student_performance_prediction/model.bin /app
+
+# Install dependencies using `uv`, respecting locked versions for consistency
+RUN uv sync --no-dev --locked && uv pip install .
+
+# Let the API know where the model is located.
+ENV MODEL_PATH=/app/model.bin 
 
 # Expose port 8000 so it can be accessed outside the container
 EXPOSE 8000
 
 # Define the command that runs when the container starts
-# Here, it runs your Python script `predict.py`
-ENTRYPOINT ["uvicorn", "predict:app", "--host", "0.0.0.0", "--port", "8000"]
+# Here, it runs the serve module.
+ENTRYPOINT ["uvicorn", "student_performance_prediction.serve:app", "--host", "0.0.0.0", "--port", "8000"]

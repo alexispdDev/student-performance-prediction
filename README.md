@@ -4,7 +4,7 @@ Student Performance Prediction is an application based on Machine Learning model
 
 The application was developed following machine learnign techniques that includes data preprocessing, exploratory data analysis (EDA), feature selection, model training, and performance evaluation using multiple ML algorithms. 
 
-For further information about the project, see: [Documentation](project-documentation.md)
+For further information about the project, see [Documentation](project-documentation.md)
 
 ### How the app works
 ![alt text](images-Readme/app-diagram.png)

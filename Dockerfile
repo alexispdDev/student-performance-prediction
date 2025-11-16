@@ -19,7 +19,7 @@ ENV PATH="/app/.venv/bin:$PATH"
 # - .python-version: specifies the Python version used locally (for consistency)
 COPY "pyproject.toml" "uv.lock" ".python-version" ./
 
-# Install dependencies using `uv`, respecting locked versions for consistency
+# Create folder where to place the application
 RUN mkdir -p /app/src/student_performance_prediction
 
 # Copy your application into the container

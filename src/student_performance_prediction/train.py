@@ -22,7 +22,7 @@ def load_data():
         df[col] = df[col].str.lower().str.replace(' ', '_').str.strip()
     
     df = df.fillna('Unknown')
-
+    df = df.copy()[df['exam_score'] <= 100].reset_index(drop=True)
     return df
 
 

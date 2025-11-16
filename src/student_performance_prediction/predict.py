@@ -19,7 +19,7 @@ class Student(BaseModel):
     tutoring_sessions: int = Field(..., ge=0)
     family_income: Literal['low', 'medium', 'high']
     teacher_quality: Literal['low', 'medium', 'high']
-    school_type: Literal['public', 'provate']
+    school_type: Literal['public', 'private']
     peer_influence: Literal['negative', 'neutral', 'positive']
     physical_activity: int = Field(..., ge=0)
     learning_disabilities: Literal['yes', 'no']

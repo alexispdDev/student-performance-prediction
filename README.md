@@ -383,7 +383,7 @@ python src/student_performance_prediction/serve.py
 student-performance-prediction
 ❯ uv run python src/student_performance_prediction/serve.py
 200
-response:  {'predicted_score': 62.81301809923141}
+response:  {'predicted_score': 62.80272388430099}
 ```
 
 Note: to request the exam score prediction of another student you should modify the serve.py file and follow the instructions given before.

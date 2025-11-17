@@ -1,4 +1,4 @@
-## 1. Problem statement
+## Problem statement
 
 ### Student Performance Prediction (SPP)
 
@@ -8,13 +8,16 @@ The project includes data preprocessing, exploratory data analysis (EDA), featur
 
 ### Problem summary
 
-Problem: predict student academic performance.  
-Target: 'Exam Score'.  
-Evaluation metric: RMSE.  
-How the model can be used: the model can serve as an early warning system — enabling educators and decision-makers to take proactive, data-informed actions that improve learning outcomes and reduce dropout or failure rates.  
+* **What are we trying to do:** Predict student academic performance.
+* **What's the objective:** What's the student's potential exam scores, given their situation.  
+* **How are we evaluating this:** RMSE.  
+* **Why are we solving this problem:** This model can serve as an early warning system — enabling educators and decision-makers to take proactive, data-informed actions that improve learning outcomes and reduce dropout or failure rates.  
 
+### Exploration
 
-## 2. Dataset description
+You can find a notebook explaining what was done in order to obtain the results [here](../src/student_performance_prediction/main.ipynb).
+
+## Dataset description
 
 | Data | Definition | Type | Values
 | ----------- | ----------- | ----------- | ----------- |
@@ -42,7 +45,7 @@ How the model can be used: the model can serve as an early warning system — en
 Data from: https://www.kaggle.com/datasets/mosapabdelghany/student-performance-factors-dataset
   
 
-## 3. EDA summary
+## EDA summary
 
 ### Dataset Overview
 
@@ -139,7 +142,7 @@ Attendance and hours studied are the two most predictive numerical features in t
 
 The low correlations among independent variables suggest a clean dataset with minimal redundancy, which is ideal for modeling.
 
-## 4. Modeling approach & metrics
+## Modeling approach & metrics
 
 The following models were evaluated:
 
@@ -171,10 +174,7 @@ To assess the model’s ability to generalize to unseen data, a 5-fold cross-val
 
 The model shows stable performance across folds, with a relatively small standard deviation (0.2283), indicating low variance. The full-training RMSE (1.521) is lower than the cross-validated mean RMSE, which is expected since the model trains on more data. Overall, the results suggest the model generalizes reasonably well, without strong signs of overfitting.
 
-
-
-
-# 7. Known limitations / next steps
+## Known limitations / next steps
 
 The model is largely influenced by the high presence of middle–lower income student populations (around 80% of students with low and medium family incomes  and near 70% comes from public schools).
 

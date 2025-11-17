@@ -4,10 +4,10 @@ Student Performance Prediction is an application based on Machine Learning model
 
 The application was developed following machine learnign techniques that includes data preprocessing, exploratory data analysis (EDA), feature selection, model training, and performance evaluation using multiple ML algorithms. 
 
-For further information about the project, see [Documentation](project-documentation.md)
+For further information about the project, see [Documentation](docs/project-documentation.md)
 
 ### How the app works
-![alt text](images-Readme/app-diagram.png)
+![alt text](docs/assets/app-diagram.png)
 
 ## How to run
 
@@ -23,16 +23,15 @@ git clone https://github.com/alexispdDev/student-performance-prediction.git
 cd student-performance-prediction
 ```
 
-## A. Build and Run the Application Using Docker
+### A. Build and Run the Application Using Docker
 
-### Building and running the Docker Container
 From the root directory of the project, build the image using:
 ```bash
 docker build -t student-score-prediction .
 docker run -it --rm -p 8000:8000 student-score-prediction
 ```
 
-## B. Locally
+### B. Locally
 
 ### Set Up the Environment
 ```bash
@@ -50,16 +49,21 @@ uv pip install -e .
 
 ### Run the Project
 
-- To run the API service:   
+To run the API service:   
 ```bash
 python -m student_performance_prediction.serve
 ```
 
-# Making request
+If you want to train a model:
+```bash
+python -m student_performance_prediction.train
+```
+
+## How to make a prediction
 
 Run the application as described in the "How to run" section via Docker or locally.  
 
-## A. Via curl
+### A. Via curl
 
 1. Open a terminal.
 
@@ -110,16 +114,16 @@ student-performance-prediction
 }'  "gender": "female"e": "far", college", 
 {"predicted_score":62.80272388430099}
 ```
-## Via Browser
+### B. Via Browser
 
 1. Open a browser and access to: http://localhost:8000/docs
-![Score Prediction docs](images-Readme/locahost-docs-1.png)
+![Score Prediction docs](docs/assets/locahost-docs-1.png)
 
 2. Drop down the green box.
-![Drop down green box](images-Readme/localhost-docs-drop-down-box.png)
+![Drop down green box](docs/assets/localhost-docs-drop-down-box.png)
 
 3. Click on "Try it out" button.
-![Click Try it out](images-Readme/localhost-docs-click-try-out.png)
+![Click Try it out](docs/assets/localhost-docs-click-try-out.png)
 
 4. Replace the json object in the "Edit Value | Schema" box for:   
 ```
@@ -149,30 +153,4 @@ student-performance-prediction
 5. Click on Execute.
 
 6. The exam score prediction is shown below.
-![Score prediction](images-Readme/server-response.png)
-
-## Via running test.py file
-1. Open a terminal and move into the project folder.
-
-2. Run the test.py (which is used mainly for testing purpose).
-```bash
-python -m student_performance_prediction.test
-```
-3. The exam score prediction appears in the console.
-```bash
-❯ python -m student_performance_prediction.test
-200
-response:  {'predicted_score': 62.80272388430099}
-```
-Note: to request the exam score prediction of another student you should modify the json accordingly and follow the instructions given before.
-
-
-# Training 
-
-1. Open a terminal and move into the project folder.
-
-2. Run the train.py.
-```bash
-python -m student_performance_prediction.train
-```
-3. The model is created and saved into the student_performance_prediction folder.
+![Score prediction](docs/assets/server-response.png)

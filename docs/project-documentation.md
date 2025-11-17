@@ -176,11 +176,8 @@ The model shows stable performance across folds, with a relatively small standar
 
 ## Known limitations / next steps
 
-The model is largely influenced by the high presence of middle–lower income student populations (around 80% of students with low and medium family incomes  and near 70% comes from public schools).
+Many features are self-reported (e.g., motivation, peer influence), which may contain bias or measurement error and reduce predictability.
 
-Also, many features are self-reported (e.g., motivation, peer influence), which may contain bias or measurement error and reduce predictability.
+Also, the dataset seems to reflect only a single moment in time. Student performance is dynamic and often changes across semesters, which cannot be captured here.
 
-The dataset reflects only a single moment in time. Student performance is dynamic and often changes across semesters, which cannot be captured here.
-
-Next step: we could suggest to try more another models like Gradient Boosting or Neural Networks.
-
+Next step: we could suggest to try another models like Gradient Boosting.
